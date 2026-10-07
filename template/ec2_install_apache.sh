@@ -3,7 +3,7 @@
 cd /home/ubuntu
 sudo apt update -y
 sudo apt install python3 python3-pip -y
-git clone <repo_url> # need to set the api repo url 
+git clone https://github.com/hiteshdotdev/dotconfig-api.git
 sleep 20
 # shellcheck disable=SC2164
 cd python-mysql-db-proj-1
