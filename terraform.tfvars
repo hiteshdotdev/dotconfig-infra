@@ -1,4 +1,4 @@
-bucket_name = "dotconfigdotinbucket"
+bucket_name = "dotconfig-bucket"
 name        = "environment"
 environment = "dev"
 

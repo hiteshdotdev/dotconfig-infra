@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "dotconfigdotinbucket"
+    bucket = "dotconfig-bucket"
     key    = "dotconfig-infra/dotconfig.tfstate"
     region = "us-east-1"
   }
