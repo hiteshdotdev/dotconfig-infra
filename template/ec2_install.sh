@@ -24,6 +24,6 @@ APP_PORT=8080
 ENV
 chmod 600 .env
 
-uv run dotconfig-api > app.log 2>error.log &
+uv run dotconfig-api >> app.log 2>>error.log &
 
 EOF
