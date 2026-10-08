@@ -59,7 +59,7 @@ module "alb" {
   tag_name                  = "dotconfig-alb"
   lb_target_group_arn       = module.lb_target_group.dotconfig_lb_target_group_arn
   ec2_instance_id           = module.ec2.dontconfig_instance_id
-  lb_listner_port           = 8080
+  lb_listner_port           = 80
   lb_listner_protocol       = "HTTP"
   lb_listner_default_action = "forward"
   lb_https_listner_port     = 443
