@@ -86,7 +86,7 @@ module "rds_db_instance" {
   db_subnet_group_name = "dotconfig_rds_subnet_group"
   subnet_groups        = tolist(module.networking.dotconfig_private_subnets)
   rds_mysql_sg_id      = module.security_group.rds_mysql_sg_id
-  mysql_db_identifier  = "mydb"
+  mysql_db_identifier  = "dotconfig_rds"
   mysql_username       = var.db_user
   mysql_password       = var.db_password
   mysql_dbname         = var.db_name
