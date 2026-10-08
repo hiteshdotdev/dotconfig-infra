@@ -37,30 +37,30 @@ module "ec2" {
 
 module "lb_target_group" {
   source                   = "./load-balancer-target-group"
-  lb_target_group_name     = "dev-proj-1-lb-target-group"
-  lb_target_group_port     = 5000
+  lb_target_group_name     = "dotconfig-lb-target-group"
+  lb_target_group_port     = 8080
   lb_target_group_protocol = "HTTP"
-  vpc_id                   = module.networking.dev_proj_1_vpc_id
-  ec2_instance_id          = module.ec2.dev_proj_1_ec2_instance_id
+  vpc_id                   = module.networking.dotconfig_vpc_id
+  ec2_instance_id          = module.ec2.dontconfig_instance_id
 }
 
 module "alb" {
   source                    = "./load-balancer"
-  lb_name                   = "dev-proj-1-alb"
+  lb_name                   = "dotconfig-alb"
   is_external               = false
   lb_type                   = "application"
   sg_enable_ssh_https       = module.security_group.sg_ec2_sg_ssh_http_id
-  subnet_ids                = tolist(module.networking.dev_proj_1_public_subnets)
-  tag_name                  = "dev-proj-1-alb"
-  lb_target_group_arn       = module.lb_target_group.dev_proj_1_lb_target_group_arn
-  ec2_instance_id           = module.ec2.dev_proj_1_ec2_instance_id
-  lb_listner_port           = 5000
+  subnet_ids                = tolist(module.networking.dotconfig_public_subnets)
+  tag_name                  = "dotconfig-alb"
+  lb_target_group_arn       = module.lb_target_group.dotconfig_lb_target_group_arn
+  ec2_instance_id           = module.ec2.dontconfig_instance_id
+  lb_listner_port           = 8080
   lb_listner_protocol       = "HTTP"
   lb_listner_default_action = "forward"
   lb_https_listner_port     = 443
   lb_https_listner_protocol = "HTTPS"
-  dev_proj_1_acm_arn        = module.aws_ceritification_manager.dev_proj_1_acm_arn
-  lb_target_group_attachment_port = 5000
+  dotconfig_acm_arn        = module.aws_ceritification_manager.dotconfig_acm_arn
+  lb_target_group_attachment_port = 8080
 }
 
 module "hosted_zone" {
@@ -78,8 +78,8 @@ module "aws_ceritification_manager" {
 
 module "rds_db_instance" {
   source               = "./rds"
-  db_subnet_group_name = "dev_proj_1_rds_subnet_group"
-  subnet_groups        = tolist(module.networking.dev_proj_1_public_subnets)
+  db_subnet_group_name = "dotconfig_rds_subnet_group"
+  subnet_groups        = tolist(module.networking.dotconfig_private_subnets)
   rds_mysql_sg_id      = module.security_group.rds_mysql_sg_id
   mysql_db_identifier  = "mydb"
   mysql_username       = "dbuser"

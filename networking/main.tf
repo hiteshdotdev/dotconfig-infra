@@ -12,6 +12,10 @@ output "dotconfig_public_subnets" {
   value = aws_subnet.dotconfig_public_subnets.*.id
 }
 
+output "dotconfig_private_subnets" {
+  value = aws_subnet.dotconfig_private_subnets.*.id
+}
+
 output "public_subnet_cidr_block" {
   value = aws_subnet.dotconfig_public_subnets.*.cidr_block
 }

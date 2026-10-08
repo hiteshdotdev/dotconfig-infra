@@ -13,4 +13,4 @@ ec2_ami_id     = "ami-0b6d9d3d33ba97d99"
 
 ec2_user_data_install_apache = ""
 
-domain_name = "api.dotconfig.in"
+domain_name = "dotconfig.in"
