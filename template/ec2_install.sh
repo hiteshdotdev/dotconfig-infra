@@ -14,6 +14,16 @@ git clone https://github.com/hiteshdotdev/dotconfig-api.git
 
 cd /home/ubuntu/dotconfig-api
 
+cat > .env <<'ENV'
+DB_HOST=${db_host}
+DB_PORT=3306
+DB_USER=${db_user}
+DB_PASSWORD=${db_password}
+DB_NAME=${db_name}
+APP_PORT=8080
+ENV
+chmod 600 .env
+
 uv run dotconfig-api > app.log 2>error.log &
 
 EOF
