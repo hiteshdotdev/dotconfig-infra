@@ -57,3 +57,19 @@ variable "domain_name" {
   type = string
   description = "Name of the domain"
 }
+
+variable "db_user" {
+  type        = string
+  description = "Master username for the RDS MySQL instance"
+}
+
+variable "db_password" {
+  type        = string
+  description = "Master password for the RDS MySQL instance"
+  sensitive   = true
+}
+
+variable "db_name" {
+  type        = string
+  description = "Name of the database created on the RDS MySQL instance"
+}
